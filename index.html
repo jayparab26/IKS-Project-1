@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IGS Project: Acoustic Signal & Tuning Analyzer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>Acoustic Signal & Tuning Analysis</h1>
+  <p class="subtitle">Time-Domain Waveform, Frequency Spectrum & Harmonic Ratio Analysis</p>
+
+  <div class="grid-container">
+    <!-- Controls Side Card -->
+    <div class="card instrument-select">
+      <img id="instrumentImg" class="img-display" src="./Templebell.jpg" alt="Temple Bell">
+      
+      <label for="soundSource" class="select-label">Select Pre-set Sound:
+        <select id="soundSource" onchange="updateInstrumentInfo()">
+          <option value="bell">Temple Bell (Ghanta)</option>
+          <option value="conch">Conch Shell (Shankha)</option>
+          <option value="sa">Classical "Sa" Note (Tanpura)</option>
+        </select>
+      </label>
+
+      <!-- Local File Upload Section -->
+      <div class="upload-box">
+        <label for="localAudioFile" class="upload-label">Or Upload Real Audio Recording:</label>
+        <input type="file" id="localAudioFile" accept="audio/*" onchange="loadLocalFile(event)">
+      </div>
+
+      <button id="playBtn" onclick="toggleAudio()">Play Sound</button>
+
+      <div class="f0-info">
+        <strong>Detected Fundamental Peak:</strong><br>
+        <span id="f0Display">-- Hz</span>
+      </div>
+    </div>
+
+    <!-- Visualizer & Analysis Side Card -->
+    <div class="card visualizer-card">
+      <div class="canvas-container">
+        <span class="canvas-label">Time-Domain Waveform x(t)</span>
+        <canvas id="timeCanvas" width="800" height="160"></canvas>
+      </div>
+
+      <div class="canvas-container">
+        <span class="canvas-label">Frequency Spectrum X(f) (FFT)</span>
+        <canvas id="freqCanvas" width="800" height="160"></canvas>
+      </div>
+
+      <!-- Analysis Comparison Table -->
+      <div class="table-container">
+        <h3>Theoretical vs. Observed Ratio Analysis</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Swar / Harmonic Position</th>
+              <th>Ideal Ratio</th>
+              <th>Just Intonation (JI)</th>
+              <th>Equal Temperament (12-TET)</th>
+              <th>Observed Signal Pitch</th>
+            </tr>
+          </thead>
+          <tbody id="ratioTable">
+            <tr>
+              <td><strong>Base "Sa" (Fundamental)</strong></td>
+              <td>1 : 1</td>
+              <td>1.000 (Base)</td>
+              <td>1.000</td>
+              <td id="ratioF0">-- Hz</td>
+            </tr>
+            <tr>
+              <td><strong>Pancham ("Pa")</strong></td>
+              <td>3 : 2</td>
+              <td>1.500</td>
+              <td>1.498</td>
+              <td id="ratioF1">-- Hz</td>
+            </tr>
+            <tr>
+              <td><strong>Taar Sa (Higher "Sa")</strong></td>
+              <td>2 : 1</td>
+              <td>2.000</td>
+              <td>2.000</td>
+              <td id="ratioF2">-- Hz</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
