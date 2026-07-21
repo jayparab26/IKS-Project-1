@@ -4,6 +4,8 @@ An interactive web application designed to analyze acoustic signals and evaluate
 
 The application features live time-domain waveform rendering, Fast Fourier Transform (FFT) frequency spectrum visualization, and harmonic ratio comparison across pre-loaded instruments.
 
+Project Github link:- https://jayparab26.github.io/IKS-Project-1/
+
 ---
 
 ## 🛠️ Project Structure
