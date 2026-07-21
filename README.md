@@ -20,6 +20,7 @@ IKS-Project-2/
 ├── shell.mp3        # Audio sample for Shankha / Conch
 ├── tanpura.jpg      # Display image for Tanpura
 └── tanpura.mp3      # Audio sample for Tanpura / Base Sa
+```
 
 ✨ Features & Functionality
 Preset Sound Selection: Switch seamlessly between acoustic sources (Temple Bell / Ghanta, Shankha / Conch, and Tanpura / Base Sa) via the dropdown menu.
